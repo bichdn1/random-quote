@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+@mixin changeColor {
+  transition: 1.5s all ease;
+}
+
+@mixin animChangeColor {
+  animation-name: animColor;
+  animation-duration: 1.5s;
+  // animation-fill-mode: forwards;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 1.2s ease;
+}
+
+#wrapper {
+  max-width: 100%;
+  margin: auto;
+  text-align: center;
+
+  p {
+    color: #fff;
+    margin-top: 1rem;
+
+    a {
+      @extend p;
+    }
+  }
+
+  #quote-box {
+    padding: 1.5rem 2rem;
+    border-radius: 3px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    background-color: rgb(240, 240, 240);
+
+    .quote-text {
+      font-size: 2rem;
+
+      .fas {
+        padding-right: 0.5rem;
+      }
+    }
+
+    .quote-author {
+      font-size: 1.3rem;
+      text-align: right;
+      margin: 1.5rem 0;
+      opacity: 1;
+    }
+
+    .animColorText {
+      @include animChangeColor;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+
+      .button-left {
+        display: flex;
+        align-items: center;
+
+        .link {
+          margin-right: 5px;
+
+          a {
+            width: 2.3rem;
+            padding: 0.5rem 0;
+          }
+        }
+      }
+
+      .button {
+        display: block;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        @include changeColor;
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+
+      #new-quote {
+        padding: 0.6rem 0.9rem;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@keyframes animColor {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  25% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media all and (min-width: 560px) {
+  #wrapper {
+    width: 550px;
+  }
+}
